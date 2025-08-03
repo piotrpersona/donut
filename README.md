@@ -13,6 +13,35 @@ Official Implementation of Donut and SynthDoG | [Paper](https://arxiv.org/abs/21
 
 </div>
 
+## Fine-tuning
+
+> Note: This section does not appear in the original [README.md](https://github.com/clovaai/donut/tree/master)
+
+This section describes the setup required to fine-tune the Donut model.
+Despite that the fine-tuning process was described in many resources, I was unable to run the training properly.
+- https://towardsdatascience.com/ocr-free-document-understanding-with-donut-1acfbdf099be/
+- https://www.freecodecamp.org/news/how-to-fine-tune-the-donut-model/
+
+The root cause of many issues was the packages versions specified in the [setup.py](https://github.com/clovaai/donut/blob/master/setup.py#L51-L52).
+The Donut was released on October 6th 2022, and I suspect that at that moment, the team was using a specific versions of python and packages.
+
+I recreated the package versions, by browsing PyPi and finding the versions by the Donut release date (Ocrober 6th 2022).
+The requirements were included in: [donut-requirements.txt](./donut-requirements.txt).
+
+Next, the python version at that moment was `3.9`. I created a new conda environment using the above version:
+```sh
+# First create conda env
+!conda create -n donut python=3.9
+# Then install all packages
+!conda run -n donut pip install -r donut-requirements.txt
+# Finally run the fine tuning
+!cd donut && conda run -n donut python train.py --config config/train_sroie.yaml
+```
+
+The fine-tuning notebook was concluded in: [./donut_finetuning_v1.ipynb](./donut_finetuning_v1.ipynb).
+
+The notebook was run in Google Colab on A100 GPU for about an hour.
+
 ## Introduction
 
 **Donut** 🍩, **Do**cume**n**t **u**nderstanding **t**ransformer, is a new method of document understanding that utilizes an OCR-free end-to-end Transformer model. Donut does not require off-the-shelf OCR engines/APIs, yet it shows state-of-the-art performances on various visual document understanding tasks, such as visual document classification or information extraction (a.k.a. document parsing). 

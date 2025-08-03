@@ -1,0 +1,12 @@
+transformers==4.22.2 # pip install transformers==4.22.2
+pytorch-lightning==1.8.5 # https://pypi.org/project/pytorch-lightning/1.6.4/
+timm==0.5.4 # https://pypi.org/project/timm/0.5.4/
+sentence-transformers==2.2.1 # https://pypi.org/project/sentence-transformers/2.2.1/
+sconf==0.2.5 # https://pypi.org/project/sconf/0.2.5/
+zss==1.2.0 # https://pypi.org/project/zss/1.2.0/
+nltk==3.7 # https://pypi.org/project/nltk/3.7/
+datasets==2.4.0
+pillow==9.2.0
+pyarrow==9.0.0
+numpy==1.23.5
+fsspec==2022.8.2
